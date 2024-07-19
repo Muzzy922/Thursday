@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thursday Cafe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.gif" type="image/gif">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .header-border {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .footer-border {
+            border-top: 2px solid #333;
+            padding-top: 10px;
+        }
+        .accordion-button:not(.collapsed) {
+            color: #333;
+            background-color: #d4fce9;
+            box-shadow: inset 0 -1px 0 rgba(160, 67, 67, 0.13);
+        }
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23333' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        .accordion-body {
+            min-height: 150px; 
+            padding: 15px; 
+        }
+        .accordion-item {
+            margin-bottom: 10px; 
+        }
+        .binding-icon, .brand-icon, .drink-icon {
+            width: 85px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .drink-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        input[type='checkbox'] {
+            -webkit-appearance: none; 
+            -moz-appearance: none;
+            appearance: none;
+            width: 20px; 
+            height: 20px; 
+            background-color: #fff; 
+            border: 2px solid #333; 
+            cursor: pointer;
+        }
+        input[type='checkbox']:checked {
+            background-color: #333; 
+        }
+        input[type='checkbox']:checked::after {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 11px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+            margin: 2px 0 0 6px;
+        }
+        .logo-image {
+            height: 100px; 
+            vertical-align: middle;
+            margin-right: 15px;
+            border-radius: 50%;
+            
+        }
+        .inline-heading {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .drink-image {
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+        body {
+        background: url('BG_2.jpg') no-repeat center / cover;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-border text-center">
+        <img src="logo.gif" alt="Vitaly Tea Logo" class="logo-image"> 
+        <h1 class="inline-heading">Thursday Cafe</h1>
+    </header>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Thursday</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="services.html">Cakes</a>
+                        </li>                 
+                        <li class="nav-item">
+                            <a class="nav-link" href="order.html">Drinks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="services">
+            <h2 class="my-5">Cake Menu</h2>
+            
+            <div class="accordion" id="cakeSizeAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="cakeSizeHeading">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#cakeSizeCollapse" aria-expanded="true" aria-controls="cakeSizeCollapse">
+                            Cake Size
+                        </button>
+                    </h2>
+                    <div id="cakeSizeCollapse" class="accordion-collapse collapse show" aria-labelledby="cakeSizeHeading" data-bs-parent="#cakeSizeAccordion">
+                        <div class="accordion-body">
+                            <h3>Choose Cake Size:</h3>
+                            <form>
+                                <label for="cakeSize">Size:</label>
+                                <select id="cakeSize" class="form-select mb-3" name="cakeSize">
+                                    <option value="4" data-price="500">4 inches - ₱500</option>
+                                    <option value="6" data-price="1000">6 inches - ₱1000</option>
+                                    <option value="8" data-price="1500">8 inches - ₱1500</option>
+                                    <option value="10" data-price="2000">10 inches - ₱2000</option>
+                                    <option value="12" data-price="2500">12 inches - ₱2500</option>
+                                    <option value="14" data-price="3000">14 inches - ₱3000</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="cakeFlavorAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="cakeFlavorHeading">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#cakeFlavorCollapse" aria-expanded="true" aria-controls="cakeFlavorCollapse">
+                            Cake Flavor
+                        </button>
+                    </h2>
+                    <div id="cakeFlavorCollapse" class="accordion-collapse collapse show" aria-labelledby="cakeFlavorHeading" data-bs-parent="#cakeFlavorAccordion">
+                        <div class="accordion-body">
+                            <h3>Choose Cake Flavor:</h3>
+                            <form action="connect.php" method="POST">
+                                <div class="flavor-options">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="flavor" id="chocolate" value="Chocolate">
+                                        <label class="form-check-label" for="chocolate">Chocolate</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="flavor" id="vanilla" value="Vanilla">
+                                        <label class="form-check-label" for="vanilla">Vanilla</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="flavor" id="mocha" value="Mocha">
+                                        <label class="form-check-label" for="mocha">Mocha</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" id="toppingsAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="toppingsHeading">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#toppingsCollapse" aria-expanded="true" aria-controls="toppingsCollapse">
+                            Toppings
+                        </button>
+                    </h2>
+                    <div id="toppingsCollapse" class="accordion-collapse collapse show" aria-labelledby="toppingsHeading" data-bs-parent="#toppingsAccordion">
+                        <div class="accordion-body">
+                            <h3>Choose Toppings:</h3>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="Edible Flowers" id="edibleFlowers" data-price="250">
+                                <label class="form-check-label" for="edibleFlowers">Edible Flowers - ₱250</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="Fondant Ribbons" id="fondantRibbons" data-price="450">
+                                <label class="form-check-label" for="fondantRibbons">Fondant Ribbons - ₱450</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="Fruit Toppings" id="fruitToppings" data-price="500">
+                                <label class="form-check-label" for="fruitToppings">Fruit Toppings - ₱500</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="Macarons" id="macarons" data-price="600">
+                                <label class="form-check-label" for="macarons">Macarons - ₱600</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-summary mt-5">
+                <h3>Order Summary:</h3>
+                <p>Size: <span id="orderSize">N/A</span></p>
+                <p>Flavor: <span id="orderFlavor">N/A</span></p>
+                <p>Toppings:</p>
+                <ul id="orderToppings"></ul>
+                <p>Total: ₱<span id="orderTotal">0.00</span></p>
+                <div class="text-center my-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Place Order</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer-border text-center mt-5">
+        <p>&copy; 2023 Thursday Cafe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            function updateOrderSummary() {
+                const selectedSize = $('#cakeSize option:selected');
+                const sizeText = selectedSize.text();
+                const sizePrice = parseFloat(selectedSize.data('price')) || 0;
+
+                const selectedFlavor = $('input[name="flavor"]:checked').val() || 'N/A';
+
+                let toppingsList = '';
+                let toppingsPrice = 0;
+                $('input[type="checkbox"]:checked').each(function () {
+                    toppingsList += '<li>' + $(this).val() + '</li>';
+                    toppingsPrice += parseFloat($(this).data('price')) || 0;
+                });
+
+                const totalPrice = sizePrice + toppingsPrice;
+
+                $('#orderSize').text(sizeText);
+                $('#orderFlavor').text(selectedFlavor);
+                $('#orderToppings').html(toppingsList);
+                $('#orderTotal').text(totalPrice.toFixed(2));
+            }
+
+            $('#cakeSize').change(updateOrderSummary);
+            $('input[name="flavor"]').change(updateOrderSummary);
+            $('input[type="checkbox"]').change(updateOrderSummary);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

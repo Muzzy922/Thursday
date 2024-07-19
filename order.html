@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thursday Cafe</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" href="favicon.gif" type="image/gif">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+            .header-border {
+                border-bottom: 2px solid #333;
+                padding-bottom: 10px;
+            }
+            .footer-border {
+                border-top: 2px solid #333;
+                padding-top: 10px;
+            }
+            .accordion-button:not(.collapsed) {
+                color: #333;
+                background-color: #d4fce9;
+                box-shadow: inset 0 -1px 0 rgba(160, 67, 67, 0.13);
+            }
+            .accordion-button::after {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23333' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            }
+            .accordion-body {
+                min-height: 150px; 
+                padding: 15px; 
+            }
+            .accordion-item {
+                margin-bottom: 10px; 
+            }
+            .binding-icon, .brand-icon, .drink-icon {
+                width: 85px;
+                height: auto;
+                margin-right: 10px;
+            }
+            .drink-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            input[type='checkbox'] {
+                -webkit-appearance: none; 
+                -moz-appearance: none;
+                appearance: none;
+                width: 20px; 
+                height: 20px; 
+                background-color: #fff; 
+                border: 2px solid #333; 
+                cursor: pointer;
+            }
+            input[type='checkbox']:checked {
+                background-color: #333; 
+            }
+            input[type='checkbox']:checked::after {
+                content: '';
+                display: block;
+                width: 6px;
+                height: 11px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                transform: rotate(45deg);
+                margin: 2px 0 0 6px;
+            }
+            .logo-image {
+                height: 100px; 
+                vertical-align: middle;
+                margin-right: 15px;
+                border-radius: 50%;
+            }
+            .inline-heading {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .drink-image {
+                width: 100px;
+                height: 100px;
+                background-size: cover;
+                background-position: center;
+                border-radius: 50%;
+            }
+
+            body {
+            background: url('BG_2.jpg') no-repeat center / cover;
+             }
+        </style>
+    </head>
+    <body>
+        <header class="header-border text-center">
+            <img src="logo.gif" alt="Vitaly Tea Logo" class="logo-image"> 
+            <h1 class="inline-heading">Thursday Cafe</h1>
+        </header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Thursday</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="services.html">Cakes</a>
+                            </li>                 
+                            <li class="nav-item">
+                                <a class="nav-link" href="order.html">Drinks</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <section id="order">
+                <h2 class="my-5">Drinks Menu</h2>
+                <form id="orderForm" action="connect.php" method="post">
+                    <div class="accordion mb-3" id="warmDrinksAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingWarmDrinks">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWarmDrinks" aria-expanded="true" aria-controls="collapseWarmDrinks">
+                                    Warm Drinks
+                                </button>
+                            </h2>
+                            <div id="collapseWarmDrinks" class="accordion-collapse collapse show" aria-labelledby="headingWarmDrinks" data-bs-parent="#warmDrinksAccordion">
+                                <div class="accordion-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5>Spiced Vanilla Almond Milk- ₱150.00</h5>
+                                            <p>(Creamy almond milk infused with vanilla and spices for a comforting dairy-free treat.)</p>
+                                            <div class="drink-image" style="background-image: url('https://happygutlucky.com/wp-content/uploads/2023/06/spiced-vitamix-almond-milk-happy-gut-lucky-04.jpg')"></div>
+                                        </div>
+                                        <div class="quantity-controls">
+                                            <input type="number" class="form-control order-quantity" data-item="spicedvanillaalmondmilk" value="0" min="0" data-price="150.00">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5>Green Tea - ₱150.00</h5>
+                                            <p>(Refreshing and antioxidant-rich tea with a grassy flavor and gentle caffeine boost.)</p>
+                                            <div class="drink-image" style="background-image: url('https://t3.ftcdn.net/jpg/00/54/46/64/360_F_54466478_IB1xs2G2zV3wZzNX2iAwAUPC4balBJhJ.jpg')"></div>
+                                        </div>
+                                        <div class="quantity-controls">
+                                            <input type="number" class="form-control order-quantity" data-item="greentea" value="0" min="0" data-price="150.00">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5>Hot Chocolate - ₱150.00</h5>
+                                            <p>(Decadent cocoa melded with creamy milk for a comforting and indulgent beverage.)</p>
+                                            <div class="drink-image" style="background-image: url('https://supersimple.com/wp-content/uploads/rawpixel-1094655-unsplash.jpg')"></div>
+                                        </div>
+                                        <div class="quantity-controls">
+                                            <input type="number" class="form-control order-quantity" data-item="hotchocolate" value="0" min="0" data-price="150.00">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5>Hot Coffee - ₱150.00</h5>
+                                            <p>(Bold and energizing, brewed from freshly ground beans for a morning pick-me-up.)</p>
+                                            <div class="drink-image" style="background-image: url('https://images.unsplash.com/photo-1596098823457-74e360fcd023?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90JTIwY29mZmVlfGVufDB8fDB8fHww')"></div>
+                                        </div>
+                                        <div class="quantity-controls">
+                                            <input type="number" class="form-control order-quantity" data-item="hotcoffee" value="0" min="0" data-price="150.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-3" id="coldDrinksAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingColdDrinks">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseColdDrinks" aria-expanded="false" aria-controls="collapseColdDrinks">
+                                    Cold Drinks
+                                </button>
+                            </h2>
+                            <div id="collapseColdDrinks" class="accordion-collapse collapse" aria-labelledby="headingColdDrinks" data-bs-parent="#coldDrinksAccordion">
+                                <div class="accordion-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5>Mango Smoothie - ₱180.00</h5>
+                                            <p>(A tropical blend of ripe mangoes, yogurt, and honey for a refreshing delight.)</p>
+                                            <div class="drink-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe0hc90Hrlfr0emcuyr4ewV556g8BcSDdcXg&s')"></div>
+                                        </div>
+                                        <div class="quantity-controls">
+                                            <input type="number" class="form-control order-quantity" data-item="mangosmoothie" value="0" min="0" data-price="180.00">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5>Berry Lemonade - ₱170.00</h5>
+                                            <p>(Zesty lemonade with a burst of mixed berries for a fruity and tart beverage.)</p>
+                                            <div class="drink-image" style="background-image: url('https://www.howsweeteats.com/wp-content/uploads/2020/07/frozen-strawberry-lemonade-10.jpg')"></div>
+                                        </div>
+                                        <div class="quantity-controls">
+                                            <input type="number" class="form-control order-quantity" data-item="berrylemonade" value="0" min="0" data-price="170.00">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5>Iced Coffee - ₱160.00</h5>
+                                            <p>(Smooth cold brew with a touch of sweetness, served over ice for a perfect summer drink.)</p>
+                                            <div class="drink-image" style="background-image: url('https://starbucks.ph/seed_data/FRAPCOF_CoffeeJellyFrappuccino.jpg')"></div>
+                                        </div>
+                                        <div class="quantity-controls">
+                                            <input type="number" class="form-control order-quantity" data-item="icedcoffee" value="0" min="0" data-price="160.00">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5>Choco Banana Milkshake - ₱170.00</h5>
+                                            <p>(Creamy blend of chocolate and banana, topped with whipped cream and chocolate shavings.)</p>
+                                            <div class="drink-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLTag5u7CQYSMV2IlZmzjiPVCM2p6CBmOoaw&s')"></div>
+                                        </div>
+                                        <div class="quantity-controls">
+                                            <input type="number" class="form-control order-quantity" data-item="chocobananamilkshake" value="0" min="0" data-price="170.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="orderSummary" class="mt-5">
+                        <h4>Order Summary</h4>
+                        <ul id="summaryList" class="list-group mb-3"></ul>
+                        <h5>Total: ₱<span id="totalPrice">0.00</span></h5>
+                        <div class="text-center my-4">
+                            <button type="submit" id="placeOrder" class="btn btn-primary btn-lg">Place Order</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <footer class="footer-border text-center mt-5">
+            <p>&copy; 2024 Thursday Cafe. All rights reserved.</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script>
+           $(document).ready(function() {
+
+        function updateOrderSummary() {
+            const orderSummary = $('#summaryList');
+            orderSummary.empty();
+            let totalPrice = 0.0;
+
+            $('.order-quantity').each(function() {
+                const quantity = $(this).val();
+                const item = $(this).data('item');
+                const price = $(this).data('price');
+
+                if (quantity > 0) {
+                    const itemName = $(this).closest('.d-flex').find('h5').text();
+                    const itemTotal = (quantity * price).toFixed(2);
+                    orderSummary.append('<li class="list-group-item d-flex justify-content-between align-items-center">' + itemName + '<span>₱' + itemTotal + '</span></li>');
+                    totalPrice += parseFloat(itemTotal);
+                }
+            });
+
+            $('#totalPrice').text(totalPrice.toFixed(2));
+        }
+
+        $('.order-quantity').on('input', updateOrderSummary);
+
+      
+        $('#placeOrder').on('click', function(e) {
+            e.preventDefault(); 
+
+            const orderItems = [];
+            $('.order-quantity').each(function() {
+                const quantity = $(this).val();
+                if (quantity > 0) {
+                    orderItems.push({
+                        item: $(this).data('item'),
+                        quantity: quantity
+                    });
+                }
+            });
+
+            if (orderItems.length > 0) {
+                window.location.href = 'shipping.html'; 
+            } else {
+                alert('Please select at least one item to order.');
+            }
+        });
+    });
+        </script>
+    </body>
+</html>
